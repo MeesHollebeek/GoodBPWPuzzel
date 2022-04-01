@@ -1,11 +1,4 @@
-﻿//333333333333333333333333333333333333333333333333333333333333333333\\
-//
-//          Arthur: Cato Parnell
-//          Description of script: control keypad button clicks and actions
-//          Any queries please go to Youtube: Cato Parnell and ask on video. 
-//          Thanks.
-//
-//33333333333333333333333333333333333333333333333333333333333333333\\
+﻿
 
 using System.Collections;
 using System.Collections.Generic;
@@ -16,17 +9,12 @@ using UnityEngine.SceneManagement;
 public class keypad : MonoBehaviour
 {
 
-    // Object to be enabled is the keypad. This is needed
+    // Object to be enabled 
     public GameObject objectToEnable;
     //player movement disable
     public GameObject player;
     public GameObject look;
     public GameObject deur;
-    // *** Breakdown of header(public) variables *** \\
-    // curPassword : Pasword to set. Ive set the password in the project. Note it can be any length and letters or numbers or sysmbols
-    // input: What is currently entered
-    // displayText : Text area on keypad the password entered gets displayed too.
-    // audioData : Play this sound when user enters in password incorrectly too many times
 
     [Header("Keypad Settings")]
     public string curPassword = "123";
@@ -43,8 +31,8 @@ public class keypad : MonoBehaviour
     void Start()
     {
 
-        btnClicked = 0; // No of times the button was clicked
-        numOfGuesses = curPassword.Length; // Set the password length.
+        btnClicked = 0; 
+        numOfGuesses = curPassword.Length; 
 
     }
 
@@ -55,21 +43,19 @@ public class keypad : MonoBehaviour
         if (btnClicked == numOfGuesses)
         {
             if (input == curPassword)
-            {
-                //Load the next scene
-                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            {             
     
-                // LOG message that password is correct
+                
                 Debug.Log("Correct Password!");
                 door.Play("Door_open", 0, 0.0f);
-                //deur.GetComponent<Transform>().eulerAngles = new Vector3(180, -90, -90);
-                input = ""; //Clear Password
+             
+                input = ""; 
                 btnClicked = 0;
 
             }
             else
             {
-                //Reset input varible
+               
                 input = "";
                 displayText.text = input.ToString();
                 audioData.Play();
@@ -83,7 +69,7 @@ public class keypad : MonoBehaviour
    
     void OnGUI()
     {
-        // Action for clicking keypad( GameObject ) on screen
+        
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -93,7 +79,7 @@ public class keypad : MonoBehaviour
             {
                 var selection = hit.transform;
 
-                if (selection.CompareTag("keypad")) // Tag on the gameobject - Note the gameobject also needs a box collider
+                if (selection.CompareTag("keypad")) 
                 {
                     keypadScreen = true;
 
@@ -110,7 +96,7 @@ public class keypad : MonoBehaviour
         look.GetComponent<MouseLook>().enabled = true;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        // Disable sections when keypadScreen is set to true
+      
         if (keypadScreen)
         {
             objectToEnable.SetActive(true);
