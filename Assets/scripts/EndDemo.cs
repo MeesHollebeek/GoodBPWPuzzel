@@ -18,25 +18,9 @@ public class EndDemo : MonoBehaviour
     {
         player.GetComponent<PlayerMovement>().enabled = false;
         look.GetComponent<MouseLook>().enabled = false;
-        if (other.CompareTag("Player"))
-        {
+
             _noteImage.enabled = true;
-           
-        }
 
     }
 
-    // Update is called once per frame
-    void OnTriggerExit(Collider other)
-    {
-        player.GetComponent<PlayerMovement>().enabled = false;
-        look.GetComponent<MouseLook>().enabled = false;
-       
-        if (other.CompareTag("Player"))
-        {
-            _noteImage.enabled = false;
-
-        }
-
-    }
 }
